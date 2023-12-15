@@ -38,9 +38,6 @@ class KNNModule:
         self.model = knn_cv.best_estimator_
         self.model.fit(X_train, y_train)
 
-        # save model
-        self.save_model()
-
     def test(self) -> None:
         assert self.dataset is not None, "Dataset is not provided"
         assert self.model is not None, "Model is not trained"
