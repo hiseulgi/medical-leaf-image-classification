@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import rootutils
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
 ROOT = rootutils.setup_root(
     search_from=__file__,
@@ -24,6 +24,7 @@ class DatasetModule:
         self.dataset = self._read_dataset()
         self.x_train, self.x_test, self.y_train, self.y_test = self._split_data()
         self.scaler = None
+        self.label_encoder = None
         self._preprocess_data()
 
     def get_train_data(self) -> Tuple[np.ndarray, np.ndarray]:
@@ -48,10 +49,6 @@ class DatasetModule:
             data, label, test_size=test_size, random_state=42
         )
 
-        # dump labels name
-        with open(ROOT / "temp" / "labels.json", "w") as f:
-            json.dump(list(label.columns), f)
-
         return X_train, X_test, y_train, y_test
 
     def _preprocess_data(self) -> None:
@@ -66,9 +63,18 @@ class DatasetModule:
         with open(ROOT / "temp" / "scaler.pkl", "wb") as f:
             pickle.dump(self.scaler, f)
 
-    def _encode_labels(self, labels: Union[pd.Series, pd.DataFrame]) -> pd.DataFrame:
-        one_hot_labels = pd.get_dummies(labels)
-        return one_hot_labels
+    def _encode_labels(self, labels: Union[pd.Series, pd.DataFrame]) -> np.ndarray:
+        self.label_encoder = LabelEncoder()
+        encoded_labels = self.label_encoder.fit_transform(labels)
+        class_mapping = dict(
+            zip(range(len(self.label_encoder.classes_)), self.label_encoder.classes_)
+        )
+
+        # dump label encoder for inference
+        with open(ROOT / "temp" / "class_mapping.json", "w") as f:
+            json.dump(class_mapping, f)
+
+        return encoded_labels
 
 
 if __name__ == "__main__":
