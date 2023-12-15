@@ -1,4 +1,4 @@
-"""Feature Extraction Module"""
+"""Feature Extraction from dataset"""
 
 from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, List
@@ -13,7 +13,7 @@ from skimage.measure import label, regionprops_table
 from skimage.morphology import erosion, remove_small_holes, remove_small_objects
 from tqdm import tqdm
 
-from src.dataset.data_module import DataModule
+from src.extraction.data_module import DataModule
 
 ROOT = rootutils.setup_root(
     search_from=__file__,

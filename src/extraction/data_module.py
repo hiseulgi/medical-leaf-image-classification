@@ -1,4 +1,4 @@
-"""Dataset Module"""
+"""Data module for dataset building"""
 from pathlib import Path
 from typing import Dict, List
 
