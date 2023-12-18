@@ -53,6 +53,8 @@ I also tried to train with different model, but the result was still bad. I thin
 
 ## How to Use
 
+### Training Module
+
 1. Clone this repository
 ``` bash
 git clone https://github.com/hiseulgi/medical-leaf-image-classification.git
@@ -70,7 +72,32 @@ bash scripts/download_dataset.sh
 python src/train.py
 ```
 
+### API Deployment Module
+
+Easy way to deploy this project is using docker. Make sure you have installed docker in your machine.
+
+1. Clone this repository
+``` bash
+git clone https://github.com/hiseulgi/medical-leaf-image-classification.git
+```
+2. Copy `.env.example` to `.env` and change the value
+``` bash
+cp .env.example .env
+```
+3. Build docker image for first time and run service
+``` bash
+# build and run compose for first time
+bash scripts/build_docker.sh
+
+# run compose after first time
+bash scripts/run_docker.sh
+```
+4. Open and test the service at API docs `http://localhost:6969/`
+![API Docs Swagger UI](asset/02_fastapi_docs.png)
+
+
 ## Future Works
 
-* [ ] Deployment API/Gradio/Streamlit
+* [x] Deployment API
+* [ ] Web App Deployment (Streamlit / Gradio)
 * [ ] Train with Deep Learning
