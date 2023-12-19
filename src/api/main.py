@@ -37,10 +37,6 @@ def main():
 
     app.include_router(predictions.router)
 
-    @app.get("/")
-    async def root():
-        return {"message": "Hello World"}
-
     server = UvicornServer(
         app=app,
         host="0.0.0.0",
