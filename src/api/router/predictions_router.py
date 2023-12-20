@@ -24,7 +24,7 @@ knn_core = KnnCore()
 
 # initialize router
 router = APIRouter(
-    prefix="/v1/predictions",
+    prefix="/predictions",
     tags=["predictions"],
     responses={404: {"description": "Not found"}},
 )
