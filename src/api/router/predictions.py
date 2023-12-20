@@ -5,10 +5,8 @@ import rootutils
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 
 from src.api.core.knn_core import KnnCore
-from src.api.schema.predictions_schema import (
-    KnnResponseSchema,
-    PredictionsRequestSchema,
-)
+from src.api.schema.api_schema import PredictionResponseSchema, PredictionsRequestSchema
+from src.api.schema.predictions_schema import PredictionsResultSchema
 from src.api.utils.logger import get_logger
 
 log = get_logger()
@@ -19,12 +17,6 @@ ROOT = rootutils.setup_root(
     pythonpath=True,
     dotenv=True,
 )
-
-
-def allowed_file_types(filename: str):
-    ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png"}
-    ext = filename.split(".")[-1].lower()
-    return ext in ALLOWED_EXTENSIONS
 
 
 # initialize knn core
@@ -38,15 +30,21 @@ router = APIRouter(
 )
 
 
+def allowed_file_types(filename: str):
+    ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png"}
+    ext = filename.split(".")[-1].lower()
+    return ext in ALLOWED_EXTENSIONS
+
+
 @router.post(
     "/knn",
     tags=["predictions"],
     summary="Classify medical leaf image",
-    response_model=List[KnnResponseSchema],
+    response_model=PredictionResponseSchema,
 )
 async def knn_predictions(
     request: Request, form: PredictionsRequestSchema = Depends()
-) -> List[KnnResponseSchema]:
+) -> PredictionResponseSchema:
     """KNN Predictions from Raw Medical Leaf Image"""
 
     # Validate file type
@@ -57,33 +55,14 @@ async def knn_predictions(
         )
     log.info(f"Processing image: {form.image.filename}")
 
-    # convert image to numpy array
-    img_np = await knn_core.preprocess_img_bytes(form.image.file.read())
+    predictions: List[PredictionsResultSchema] = await knn_core.predict(
+        form.image.file.read()
+    )
 
-    # preprocess image
-    img_np = await knn_core.preprocess_img_knn(img_np)
+    response = PredictionResponseSchema(
+        status="success", message="Image processed successfully.", results=predictions
+    )
 
-    # features extraction
-    features = await knn_core.feature_extraction_knn(img_np)
+    log.info(f"Image processed successfully.")
 
-    # scale features
-    features = knn_core.scaler.transform(features)
-
-    # predict
-    predictions = knn_core.model.predict_proba(features.reshape(1, -1))
-
-    # get result
-    result: List[KnnResponseSchema] = []
-    top_5_pred = np.argsort(predictions, axis=1)[0, -5:][::-1]
-
-    for idx in top_5_pred:
-        result.append(
-            KnnResponseSchema(
-                label=knn_core.class_mapping[str(idx)],
-                score=predictions[0, idx],
-            )
-        )
-
-    log.info(f"Predictions: {result}")
-
-    return result
+    return response

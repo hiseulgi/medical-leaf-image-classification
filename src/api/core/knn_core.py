@@ -1,7 +1,7 @@
 import json
 import pickle
 from io import BytesIO
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import rootutils
@@ -13,6 +13,7 @@ from skimage.morphology import erosion, remove_small_holes, remove_small_objects
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import MinMaxScaler
 
+from src.api.schema.predictions_schema import PredictionsResultSchema
 from src.api.utils.logger import get_logger
 
 ROOT = rootutils.setup_root(
@@ -27,20 +28,22 @@ log = get_logger()
 
 class KnnCore:
     def __init__(self):
-        self.setup()
+        self._setup()
 
-    def setup(self):
+    def _setup(self):
         """Setup KNN Core"""
         # load scaler
-        with open(ROOT / "temp" / "scaler.pkl", "rb") as f:
+        with open(ROOT / "src" / "api" / "static" / "model" / "scaler.pkl", "rb") as f:
             self.scaler: MinMaxScaler = pickle.load(f)
 
         # load model
-        with open(ROOT / "temp" / "knn_model.pkl", "rb") as f:
+        with open(
+            ROOT / "src" / "api" / "static" / "model" / "knn_model.pkl", "rb"
+        ) as f:
             self.model: KNeighborsClassifier = pickle.load(f)
 
         # load class mapping from json
-        with open(ROOT / "temp" / "class_mapping.json", "r") as f:
+        with open(ROOT / "src" / "api" / "static" / "class_mapping.json", "r") as f:
             self.class_mapping: Dict[str, str] = json.load(f)
 
     async def preprocess_img_bytes(self, img_bytes: bytes) -> np.ndarray:
@@ -88,3 +91,36 @@ class KnnCore:
         props = {k: v[0] for k, v in props.items()}
         props_np = np.array(list(props.values())).reshape(1, -1)
         return props_np
+
+    async def predict(self, img_bytes: bytes) -> List[PredictionsResultSchema]:
+        """Predict using KNN model."""
+
+        # read image as numpy array
+        img_np = await self.preprocess_img_bytes(img_bytes)
+
+        # preprocess image
+        img_np = await self.preprocess_img_knn(img_np)
+
+        # features extraction
+        features = await self.feature_extraction_knn(img_np)
+
+        # scale features
+        features = self.scaler.transform(features)
+
+        # predict
+        predictions = self.model.predict_proba(features.reshape(1, -1))
+
+        # get result
+        result: List[PredictionsResultSchema] = []
+        top_5_pred = np.argsort(predictions, axis=1)[0, -5:][::-1]
+
+        for idx in top_5_pred:
+            result.append(
+                PredictionsResultSchema(
+                    label=self.class_mapping[str(idx)],
+                    score=predictions[0, idx],
+                )
+            )
+
+        log.info(f"Predictions: {result}")
+        return result
