@@ -1,5 +1,4 @@
-import base64
-from typing import List, Tuple
+from typing import Dict, Tuple
 
 import httpx
 import rootutils
@@ -20,11 +19,18 @@ SAMPLE_IMAGE = {
 }
 
 
-def predict(image_bytes: bytes) -> Tuple[int, List[any]]:
+def get_predict(image_bytes: bytes) -> Tuple[int, Dict[str, any]]:
     r = httpx.post("http://api:6969/v1/predictions/knn", files={"image": image_bytes})
     if r.status_code != 200:
         return r.status_code, {}
 
+    return r.status_code, r.json()
+
+
+def get_blog(class_name: str) -> Tuple[int, Dict[str, any]]:
+    r = httpx.get(f"http://api:6969/v1/blog?class_name={class_name}")
+    if r.status_code != 200:
+        return r.status_code, {}
     return r.status_code, r.json()
 
 
@@ -38,7 +44,7 @@ def main():
 
     st.title("Medical Leaf Classification :herb:")
 
-    col1, col2 = st.columns([2, 3])
+    col1, _, col3 = st.columns([3, 1, 3])
 
     with col1:
         uploaded_file = st.file_uploader(
@@ -60,24 +66,44 @@ def main():
             st.image(image, caption="Sample Image", use_column_width=True)
             image_bytes = open(SAMPLE_IMAGE[sample], "rb")
 
-    with col2:
+    with col3:
         if image_bytes is not None:
             if st.button(
                 "Predict", type="primary", key="predict", use_container_width=True
             ):
+                # predict route
+                st.markdown("---")
                 with st.spinner("Predicting..."):
-                    status_code, predictions = predict(image_bytes)
+                    status_code, response = get_predict(image_bytes)
+                    if status_code != 200:
+                        st.error("Error fetching data!", icon="❌")
+                        st.stop()
+                    predictions = response["results"]
 
-                if status_code != 200:
-                    st.error("Error fetching data!", icon="❌")
-                    st.stop()
-                st.success(f"Status code: {status_code}", icon="✅")
+                st.toast(f"Status code (predictions): {status_code}", icon="✅")
 
-                st.write("Predictions:")
+                st.markdown("## Predictions")
                 for data in predictions:
                     st.progress(
                         data["score"], text=f'{data["label"]} - {data["score"]}'
                     )
+
+                # blog route
+                st.markdown("---")
+                with st.spinner("Fetching blog..."):
+                    status_code, response = get_blog(predictions[0]["label"])
+                    if status_code != 200:
+                        st.error("Error fetching data!", icon="❌")
+                        st.stop()
+                    blog = response["results"]
+
+                st.toast(f"Status code (predictions): {status_code}", icon="✅")
+                st.markdown(f"## {blog['real_name']} (*{blog['binomial_name']}*)")
+                _, colb, _ = st.columns(3)
+                with colb:
+                    st.image(blog["image"], use_column_width=True)
+                st.markdown(blog["description"])
+                st.markdown("---")
 
 
 if __name__ == "__main__":
