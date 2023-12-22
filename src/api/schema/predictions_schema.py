@@ -1,5 +1,4 @@
 import rootutils
-from fastapi import File, UploadFile
 from pydantic import BaseModel, Field, validator
 
 ROOT = rootutils.setup_root(
@@ -10,12 +9,8 @@ ROOT = rootutils.setup_root(
 )
 
 
-class PredictionsRequestSchema(BaseModel):
-    image: UploadFile = File(..., description="Raw medical leaf image")
-
-
-class KnnResponseSchema(BaseModel):
-    """KNN Predictions Response Schema"""
+class PredictionsResultSchema(BaseModel):
+    """Predictions Result Schema"""
 
     label: str = Field(..., description="Predicted Label", example="curry")
     score: float = Field(..., description="Predicted Score", example=0.6)

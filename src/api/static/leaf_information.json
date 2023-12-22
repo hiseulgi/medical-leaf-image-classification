@@ -1,0 +1,212 @@
+{
+    "0": {
+        "class_name": "arive_dantu",
+        "real_name": "Green Amaranth",
+        "binomial_name": "Amaranthus viridis",
+        "image": "https://i0.wp.com/greencoverinitiative.com/wp-content/uploads/2021/04/amaranthus-palmeri4-1.jpg?fit=600%2C600&ssl=1",
+        "description": "Amaranthus viridis is used as traditional medicine in the treatment of fever, pain, asthma, diabetes, dysentery, urinary disorders, liver disorders, eye disorders and venereal diseases."
+    },
+    "1": {
+        "class_name": "basale",
+        "real_name": "Malabar spinach",
+        "binomial_name": "Basella alba",
+        "image": "https://cdns.klimg.com/merdeka.com/i/w/news/2020/10/27/1235871/540x270/10-manfaat-tanaman-gendola-bagi-kesehatan-lancarkan-pencernaan-hingga-cegah-anemia.jpg",
+        "description": "Malabar spinach is a nutrient-dense and versatile leafy green vegetable that offers a wide range of health benefits. From improving digestion and promoting heart health to boosting immunity and aiding in weight loss, Malabar spinach is truly a superfood that can enhance your overall well-being."
+    },
+    "2": {
+        "class_name": "betel",
+        "real_name": "Betel",
+        "binomial_name": "Piper betle",
+        "image": "https://lzd-img-global.slatic.net/g/p/6aa40f9151c42d00debf0c7f2467807d.jpg_720x720q80.jpg",
+        "description": "The betel leaves are mainly used as mouth freshener and is also well known for curing many communicable and non-communicable diseases like cold, cough, bronchial asthma, rheumatism, stomachalgia and used to treat other diseases."
+    },
+    "3": {
+        "class_name": "crape_jasmine",
+        "real_name": "Crape Jasmine",
+        "binomial_name": "Tabernaemontana divaricata",
+        "image": "https://admin.thegreenyard.in/uploads/product_images/736481170-Crape-Jasmine.jpg",
+        "description": "Crape jasmine has been used for liver disease (hepatitis), pain due to liver scarring (cirrhosis), and abdominal pain due to severe diarrhea (dysentery). It is also used to prevent stroke, to cause relaxation (as a sedative), to heighten sexual desire (as an aphrodisiac), and in cancer treatment."
+    },
+    "4": {
+        "class_name": "curry",
+        "real_name": "Curry Leaf",
+        "binomial_name": "Murraya koenigii",
+        "image": "https://images-cdn.ubuy.co.id/6361cf832184ab047238e822-curry-leaf-tree-murraya-koenigii.jpg",
+        "description": "Curry leaves are a rich source of vitamin A, vitamin B, vitamin C, vitamin B2, calcium, and iron, apart from a heavy distinctive odor and pungent taste. It helps in the treatment of dysentery, diarrhea, diabetes, morning sickness, and nausea by adding curry leaves to your meals."
+    },
+    "5": {
+        "class_name": "drumstick",
+        "real_name": "Moringa",
+        "binomial_name": "Moringa oleifera",
+        "image": "https://ahligizi.id/blog/wp-content/uploads/2021/09/plant-g834507704_1920-800x445.jpg",
+        "description": "Moringa oleifera plays an important role in protecting the liver from damage, oxidation and toxicity due to the high concentrations of polyphenols in its leaves and flowers. Moringa oleifera oil can also restore liver enzymes to normal levels, reducing oxidative stress and increasing protein content in the liver."
+    },
+    "6": {
+        "class_name": "fenugreek",
+        "real_name": "Fenugreek",
+        "binomial_name": "Trigonella foenum-graecum",
+        "image": "https://www.greendna.in/cdn/shop/products/Fenugreek-Methi_b50b4f7e-92bd-46bc-b7d1-b2ae1ddc2629_619x.jpg?v=1672577996",
+        "description": "Fenugreek leaves are eaten in India as a vegetable. Fenugreek is taken by mouth for digestive problems such as loss of appetite, upset stomach, constipation, inflammation of the stomach (gastritis). Fenugreek is also used for diabetes, painful menstruation, polycystic ovary syndrome, and obesity."
+    },
+    "7": {
+        "class_name": "guava",
+        "real_name": "Guava",
+        "binomial_name": "Psidium guajava",
+        "image": "https://keyserver.lucidcentral.org/weeds/data/media/Images/psidium_guajava/psidiumguajava11.jpg",
+        "description": "The guava leaves are rich in vitamins, minerals, and antioxidants. They contain essential nutrients like Vitamin C, A, and potassium, offering a wide range of health benefits. They can help with digestion, control blood sugar levels, boost your immune system, improve your skin, and even promote hair growth."
+    },
+    "8": {
+        "class_name": "hibiscus_rosa_sinensis",
+        "real_name": "Chinese hibiscus",
+        "binomial_name": "Hibiscus rosa-sinensis",
+        "image": "https://www.iafaforallergy.com/wp-content/uploads/2020/08/Japa-Hibiscus-rosa-sinensis-1.jpg",
+        "description": "Hibiscus rosa-sinensis is a flowering plant native to tropical Asia. Hibiscus is commonly consumed in teas made from its flowers, leaves, and roots. In addition to casual consumption, Hibiscus is also used as an herbal medicine to treat hypertension, cholesterol production, and cancer progression."
+    },
+    "9": {
+        "class_name": "indian_beech",
+        "real_name": "Karanja / Indian beech",
+        "binomial_name": "Pongamia pinnata",
+        "image": "https://www.feedipedia.org/sites/default/files/images/karanja_leaves_flowers.jpg",
+        "description": "Karanja is a medicinal herb mainly used for skin disorders. All parts of Karanja tree (roots, flowers, leaves, bark) are used for medicinal purposes. Karanja is widely used in managing constipation as it helps to improve gut motility and has a laxative property."
+    },
+    "10": {
+        "class_name": "indian_mustard",
+        "real_name": "Indian Mustard",
+        "binomial_name": "Brassica juncea",
+        "image": "https://www.chilternseeds.co.uk/images/products/img_9225_13163.jpg",
+        "description": "Indian mustard has been consumed for centuries in Asia, Europe, and North America. Though generally the leaves, root, and shoots are known and used as vegetables, and seeds as a condiment or a source of oil, traditional Asian medicine has applied the seeds for numerous diseases."
+    },
+    "11": {
+        "class_name": "jackfruit",
+        "real_name": "Jackfruit",
+        "binomial_name": "Artocarpus heterophyllus",
+        "image": "https://t3.ftcdn.net/jpg/03/28/33/38/360_F_328333813_oWNctWDpKQCpvmynVT4rHPUgQaJbN0X1.jpg",
+        "description": "The several parts of jack tree including fruits, leaves, and barks have been extensively used in traditional medicine due to its anticarcinogenic, antimicrobial, antifungal, anti-inflammatory, wound healing, and hypoglycemic effects."
+    },
+    "12": {
+        "class_name": "jamaica_cherry_gasagase",
+        "real_name": "Jamaican Cherry",
+        "binomial_name": "Muntingia calabura",
+        "image": "https://www.nparks.gov.sg/-/media/ffw/migrated/round2/flora/3036/4e7a1019288a4c3482e2dc62baac65b3.ashx",
+        "description": "M. calabura are traditional medicinal uses have been reported for the leaves (headaches, prostate problems, reduce gastric ulcers), bark (antiseptic), flowers (antiseptic, reduce swelling, antispasmodic), and fruits (respiratory problems, antidiarrheic)."
+    },
+    "13": {
+        "class_name": "jamun",
+        "real_name": "Jamun / Malabar plum",
+        "binomial_name": "Syzygium cumini",
+        "image": "https://www.nparks.gov.sg/-/media/ffw/migrated/round2/flora/3158/cca5d8eeec02495094dc27a876689561.ashx",
+        "description": "The bark is acrid, sweet, digestive, astringent to the bowels, anthelmintic and used for the treatment of sore throat, bronchitis, asthma, thirst, biliousness, dysentery and ulcers. It is also a good blood purifier."
+    },
+    "14": {
+        "class_name": "jasmine",
+        "real_name": "Jasmine",
+        "binomial_name": "Jasminum",
+        "image": "https://www.nparks.gov.sg/-/media/ffw/migrated/round2/flora/4343/b0f87bf646534e57af0aea092c73e53d.ashx",
+        "description": "Jasmine has been used for liver disease (hepatitis), liver pain due to cirrhosis, and abdominal pain due to severe diarrhea (dysentery). It is also used to cause relaxation (as a sedative), to heighten sexual desire (as an aphrodisiac), and in cancer treatment."
+    },
+    "15": {
+        "class_name": "karanda",
+        "real_name": "Karanda / Bengal Currant",
+        "binomial_name": "Carissa carandas",
+        "image": "https://www.picturethisai.com/wiki-image/1080/157387294192435207.jpeg",
+        "description": "Karanda can treat acidity, indigestion, fresh and infected wounds, skin diseases, urinary disorders and diabetic ulcer, as well as biliousness, stomach pain, constipation, anemia, skin conditions, anorexia and insanity. Leaf decoction is used to treat fever, diarrhea, and earache."
+    },
+    "16": {
+        "class_name": "lemon",
+        "real_name": "Lemon",
+        "binomial_name": "Citrus × limon",
+        "image": "https://img.freepik.com/premium-photo/lemon-citrus-limon-pink-white-flowers-green-leaves_358675-1349.jpg",
+        "description": "Leaves of the lemon plant have beneficial and medicinal properties. The lemon leaves have several benefits for your skin as well. Fresh lemon leaves with hot water can also reduce the effect of migraine headaches and asthma."
+    },
+    "17": {
+        "class_name": "mango",
+        "real_name": "Mango",
+        "binomial_name": "Mangifera indica",
+        "image": "https://www.stylecraze.com/wp-content/uploads/2014/12/10-Amazing-Benefits-And-Uses-Of-Mango-Leaves-Aam-Ke-Patte_180370772.jpg",
+        "description": "Mango leaves help reduce blood pressure and treat diabetes. Mango leaves contain a phytochemical called mangiferin, which may help ease anxiety-related restlessness. You can burn a few mango leaves to ashes to help treat colds and hiccups. Mango leaf extract can be used as ear drops to treat earaches."
+    },
+    "18": {
+        "class_name": "mexican_mint",
+        "real_name": "Mexican Mint",
+        "binomial_name": "Plectranthus amboinicus",
+        "image": "",
+        "description": "Mexican Mint is also known as Indian Borage, Ajwain/Patharchur in Hindi, Ova Paan in Marathi. It has a plethora of health benefits that may include its ability to improve skin, detoxify the body, defend against cough and cold, ease arthritis pain, relieve stress, and optimize digestion."
+    },
+    "19": {
+        "class_name": "mint",
+        "real_name": "Mint",
+        "binomial_name": "Mentha spicata",
+        "image": "https://www.healthshots.com/wp-content/uploads/2020/09/mint-leaves.jpg",
+        "description": "Mint leaves are known as an amazing appetizer. It helps to promote the digestive system by stimulating digestive enzymes. Mint oil has antiseptic and antibacterial properties to relieve indigestion, stomach infections, etc. It acts as an anti-spasmodic remedy due to the presence of methanol."
+    },
+    "20": {
+        "class_name": "neem",
+        "real_name": "Neem",
+        "binomial_name": "Azadirachta indica",
+        "image": "https://www.greendna.in/cdn/shop/products/neem-leaves-500x500_500x.jpg?v=1561651964",
+        "description": "Neem leaf is used for leprosy, eye disorders, bloody nose, intestinal worms, stomach upset, loss of appetite, skin ulcers, diseases of the heart and blood vessels (cardiovascular disease), fever, diabetes, gum disease (gingivitis), and liver problems. The leaf is also used for birth control and to cause abortions."
+    },
+    "21": {
+        "class_name": "oleander",
+        "real_name": "Oleander",
+        "binomial_name": "Nerium oleander",
+        "image": "https://www.nparks.gov.sg/-/media/ffw/migrated/round2/flora/2264/4c556e3ac83f473199b28d62052bcdc3.ashx",
+        "description": "Oleander is used for heart conditions, asthma, epilepsy, cancer, painful menstrual periods, leprosy, malaria, ringworm, indigestion, and venereal disease; and to cause abortions."
+    },
+    "22": {
+        "class_name": "parijata",
+        "real_name": "Parijata / Night Blooming Jasmine",
+        "binomial_name": "Nyctanthes arbor-tristis",
+        "image": "https://mygardenlife.com/wp-content/uploads/2022/12/5522_30-1.jpg",
+        "description": "Parijata is a fragrant plant with multifaceted medicinal properties like antioxidant, antibacterial, antifungal, anticancer, hypoglycemic, antimalarial, antiepileptic, cytotoxic, analgesic, anti-inflammatory, anti-HIV, and hepatoprotective, antipyretic and wound healing effect."
+    },
+    "23": {
+        "class_name": "peepal_tree",
+        "real_name": "Peepal Tree",
+        "binomial_name": "Ficus religiosa",
+        "image": "https://lalitenterprise.com/cdn/shop/files/Untitleddesign_44_4.webp?v=1685083113",
+        "description": "Traditionally, the leaf juice of the peepal tree may be helpful for cough, asthma, diarrhoea, ear pain, toothache, haematuria (blood in urine), migraine, scabies, eye troubles, and gastric problems. The stem bark of the peepal tree might help with paralysis, gonorrhoea, bone fractures, diarrhoea, and diabetes."
+    },
+    "24": {
+        "class_name": "pomegranate",
+        "real_name": "Pomegranate",
+        "binomial_name": "Punica granatum",
+        "image": "https://imgk.timesnownews.com/story/1530594591-pome.PNG",
+        "description": "Pomegranate leaves are used to treat jaundice, diarrhoea, stomach pain and insomnia. Also, pomegranate tea can lower blood pressure levels, in turn boosting the heart health. Its regular consumption is also said to reduce inflammation, cholesterol and increase oxygen levels in blood."
+    },
+    "25": {
+        "class_name": "rasna",
+        "real_name": "Rasna / Ginger / Galangal",
+        "binomial_name": "Alpinia galanga",
+        "image": "https://cdn.hsnstore.com/blog/wp-content/uploads/sites/5/2019/03/alpinia-galanga-natural-plant.jpg",
+        "description": "The Galangal leaf is used in Malaysian traditional medicine, especially for after-birth care. Galangal leaves are used in bath water and are believed to stimulate circulation and help with post-pregnancy rheumatism."
+    },
+    "26": {
+        "class_name": "rose_apple",
+        "real_name": "Rose Apple",
+        "binomial_name": "Syzygium jambos",
+        "image": "https://thumbs.dreamstime.com/b/branch-rose-apple-tree-holding-leafy-branch-rose-apple-tree-mature-young-leaves-spring-point-green-138706604.jpg",
+        "description": "Rose apples are effective against smallpox and joint inflammations. The leaves help treat sore eyes. It helps to repair body tissues and damaged cells. Rose apple contains malic acid, which helps to regulate glucose intake."
+    },
+    "27": {
+        "class_name": "roxburgh_fig",
+        "real_name": "Roxburgh fig",
+        "binomial_name": "Ficus auriculata",
+        "image": "https://www.feedipedia.org/sites/default/files/images/ficus_auriculata.jpg",
+        "description": "Ficus auriculata (Roxburgh fig) is a type of fig tree seen all over Asia noted for its big and round leaves. Leaves are crushed and the paste is applied on the wounds. They are also used in diarrhea and dysentery. Leaves are lopped for fodder."
+    },
+    "28": {
+        "class_name": "sandalwood",
+        "real_name": "Sandalwood",
+        "binomial_name": "Santalum paniculatum",
+        "image": "https://www.easyayurveda.com/wp-content/uploads/2014/12/Sandalwood-leaves.jpg",
+        "description": "The leaves and bark were used by early Hawaiians to treat dandruff, lice, skin inflammation, and sexually transmitted diseases. Sandalwood oil has also demonstrated repellency against the crop pest Tetranychus urticae (two-spotted spider mite)."
+    },
+    "29": {
+        "class_name": "tulsi",
+        "real_name": "Tulsi / Holy Basil",
+        "binomial_name": "Ocimum tenuiflorum",
+        "image": "https://media.post.rvohealth.io/wp-content/uploads/2020/09/766x416_Holy_Basil-732x415.jpg",
+        "description": "Tulsi is employed in addressing heart conditions and fevers, as well as respiratory issues. It is utilized for alleviating symptoms such as fever, the common cold, sore throat, headaches, and kidney stones. Additionally, Tulsi is effective in managing asthma."
+    }
+}

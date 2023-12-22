@@ -1,4 +1,4 @@
-# usage: docker build -f Dockerfile.api -t hiseulgi/medical-leaf-api:latest .
+# usage: docker build -f Dockerfile -t hiseulgi/medical-leaf-api:latest .
 FROM python:3.11.5-slim
 
 # Install dependencies
