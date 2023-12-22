@@ -97,6 +97,11 @@ bash scripts/run_docker.sh
 5. Open and test the service at Web App `http://localhost:8051/`
 ![Streamlit Web App](asset/03_web_app.png)
 
+## Extra (Deep Learning Model)
+
+According to KNN and other machine learning model result, I think the problem is in the dataset. So, I tried to train with deep learning model. I used MobileNetV3 as the base model and trained with transfer learning. The result was better than KNN and other machine learning model.
+![Deep Learning Model Result](asset/04_mobilenetv3_result.png)
+Here the training notebook: [Medical Leaf Image Classification (Deep Learning)](https://colab.research.google.com/drive/1-YK-djfIu3LtHOH6UiUHG7oScG-BzU0h?usp=sharing)
 
 ## Future Works
 
