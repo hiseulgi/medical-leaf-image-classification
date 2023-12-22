@@ -1,7 +1,6 @@
 # Medical Leaf Image Classification
 
-Unofficial implementation of [Mengenali Jenis Tanaman Obat Berbasis Pola Citra Daun 
-Dengan Algoritma K-Nearest Neighbors](https://ejournal.unesa.ac.id/index.php/jinacs/article/download/42746/36728). This project is a part of my final project in Image Processing course.
+Unofficial implementation of [*Mengenali Jenis Tanaman Obat Berbasis Pola Citra Daun Dengan Algoritma K-Nearest Neighbors*](https://ejournal.unesa.ac.id/index.php/jinacs/article/download/42746/36728) (**Recognizing Types of Medicinal Plants Based on Leaf Image Patterns with K-Nearest Neighbors Algorithm**). This project is a part of my final project in Image Processing course.
 
 ## Dataset
 
@@ -72,7 +71,7 @@ bash scripts/download_dataset.sh
 python src/train.py
 ```
 
-### API Deployment Module
+### API & Web App Deployment Module
 
 Easy way to deploy this project is using docker. Make sure you have installed docker in your machine.
 
@@ -95,9 +94,12 @@ bash scripts/run_docker.sh
 4. Open and test the service at API docs `http://localhost:6969/`
 ![API Docs Swagger UI](asset/02_fastapi_docs.png)
 
+5. Open and test the service at Web App `http://localhost:8051/`
+![Streamlit Web App](asset/03_web_app.png)
+
 
 ## Future Works
 
 * [x] Deployment API
-* [ ] Web App Deployment (Streamlit / Gradio)
+* [x] Web App Deployment (Streamlit / Gradio)
 * [ ] Train with Deep Learning
