@@ -1,3 +1,5 @@
+from typing import List
+
 import rootutils
 from pydantic import BaseModel, Field, validator
 
@@ -12,9 +14,11 @@ ROOT = rootutils.setup_root(
 class PredictionsResultSchema(BaseModel):
     """Predictions Result Schema"""
 
-    label: str = Field(..., description="Predicted Label", example="curry")
-    score: float = Field(..., description="Predicted Score", example=0.6)
+    labels: List[str] = Field(
+        ..., description="Predicted Labels", example=["curry", "basil"]
+    )
+    scores: List[float] = Field(..., description="Predicted Scores", example=[0.6, 0.4])
 
-    @validator("score", pre=True)
-    def score_to_float(cls, v: float) -> float:
-        return round(v, 2)
+    @validator("scores", pre=True)
+    def round_scores(cls, v):
+        return [round(score, 2) for score in v]

@@ -8,6 +8,7 @@ from src.api.core.knn_core import KnnCore
 from src.api.schema.api_schema import PredictionResponseSchema, PredictionsRequestSchema
 from src.api.schema.predictions_schema import PredictionsResultSchema
 from src.api.utils.logger import get_logger
+from src.api.utils.utils import preprocess_img_bytes
 
 log = get_logger()
 
@@ -55,12 +56,12 @@ async def knn_predictions(
         )
     log.info(f"Processing image: {form.image.filename}")
 
-    predictions: List[PredictionsResultSchema] = await knn_core.predict(
-        form.image.file.read()
-    )
+    img_np = await preprocess_img_bytes(form.image.file.read())
+
+    predictions = await knn_core.predict(img_np)
 
     response = PredictionResponseSchema(
-        status="success", message="Image processed successfully.", results=predictions
+        status="success", message="Image processed successfully.", results=[predictions]
     )
 
     log.info(f"Image processed successfully.")
