@@ -1,3 +1,4 @@
 httpx==0.25.2
 rootutils==1.0.7
+pydantic==1.10.13
 streamlit==1.28.2
