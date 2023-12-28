@@ -6,7 +6,7 @@ from lazypredict.Supervised import LazyClassifier
 from sklearn.model_selection import GridSearchCV, KFold
 from sklearn.neighbors import KNeighborsClassifier
 
-from src.dataset.dataset_module import DatasetModule
+from src.knn.dataset.dataset_module import DatasetModule
 
 ROOT = rootutils.setup_root(
     search_from=__file__,

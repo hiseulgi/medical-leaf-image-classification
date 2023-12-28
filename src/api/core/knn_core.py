@@ -1,11 +1,10 @@
 import json
 import pickle
-from io import BytesIO
-from typing import Dict, List
+from pathlib import Path
+from typing import Dict
 
 import numpy as np
 import rootutils
-from PIL import Image
 from skimage.color import rgb2gray
 from skimage.filters import median, threshold_otsu
 from skimage.measure import label, regionprops_table
@@ -27,34 +26,38 @@ log = get_logger()
 
 
 class KnnCore:
-    def __init__(self):
+    def __init__(
+        self,
+        model_path: str = str(
+            ROOT / "src" / "api" / "static" / "model" / "knn_model.pkl"
+        ),
+        scaler_path: str = str(
+            ROOT / "src" / "api" / "static" / "model" / "scaler.pkl"
+        ),
+        class_mapping_path: str = str(
+            ROOT / "src" / "api" / "static" / "class_mapping.json"
+        ),
+    ) -> None:
+        """Initialize KNN Core"""
+
+        self.model_path = Path(model_path)
+        self.scaler_path = Path(scaler_path)
+        self.class_mapping_path = Path(class_mapping_path)
         self._setup()
 
-    def _setup(self):
+    def _setup(self) -> None:
         """Setup KNN Core"""
         # load scaler
-        with open(ROOT / "src" / "api" / "static" / "model" / "scaler.pkl", "rb") as f:
+        with open(self.scaler_path, "rb") as f:
             self.scaler: MinMaxScaler = pickle.load(f)
 
         # load model
-        with open(
-            ROOT / "src" / "api" / "static" / "model" / "knn_model.pkl", "rb"
-        ) as f:
+        with open(self.model_path, "rb") as f:
             self.model: KNeighborsClassifier = pickle.load(f)
 
         # load class mapping from json
-        with open(ROOT / "src" / "api" / "static" / "class_mapping.json", "r") as f:
+        with open(self.class_mapping_path, "r") as f:
             self.class_mapping: Dict[str, str] = json.load(f)
-
-    async def preprocess_img_bytes(self, img_bytes: bytes) -> np.ndarray:
-        """Preprocess image bytes."""
-        img = Image.open(BytesIO(img_bytes))
-        img = np.array(img)
-        # if PNG, convert to RGB
-        if img.shape[-1] == 4:
-            img = img[..., :3]
-
-        return img
 
     async def preprocess_img_knn(self, img_np: np.ndarray) -> np.ndarray:
         """Preprocess image for KNN."""
@@ -92,11 +95,8 @@ class KnnCore:
         props_np = np.array(list(props.values())).reshape(1, -1)
         return props_np
 
-    async def predict(self, img_bytes: bytes) -> List[PredictionsResultSchema]:
+    async def predict(self, img_np: np.ndarray) -> PredictionsResultSchema:
         """Predict using KNN model."""
-
-        # read image as numpy array
-        img_np = await self.preprocess_img_bytes(img_bytes)
 
         # preprocess image
         img_np = await self.preprocess_img_knn(img_np)
@@ -111,16 +111,16 @@ class KnnCore:
         predictions = self.model.predict_proba(features.reshape(1, -1))
 
         # get result
-        result: List[PredictionsResultSchema] = []
+        labels = []
+        scores = []
         top_5_pred = np.argsort(predictions, axis=1)[0, -5:][::-1]
 
-        for idx in top_5_pred:
-            result.append(
-                PredictionsResultSchema(
-                    label=self.class_mapping[str(idx)],
-                    score=predictions[0, idx],
-                )
-            )
+        for i in top_5_pred:
+            labels.append(self.class_mapping[str(i)])
+            scores.append(float(predictions[0, i]))
+
+        result = PredictionsResultSchema(labels=labels, scores=scores)
 
         log.info(f"Predictions: {result}")
+
         return result

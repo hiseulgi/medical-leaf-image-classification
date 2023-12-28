@@ -1,6 +1,10 @@
 # Medical Leaf Image Classification
 
+![Web App Demo](asset/00_web_app_demo.gif)
+
 Unofficial implementation of [*Mengenali Jenis Tanaman Obat Berbasis Pola Citra Daun Dengan Algoritma K-Nearest Neighbors*](https://ejournal.unesa.ac.id/index.php/jinacs/article/download/42746/36728) (**Recognizing Types of Medicinal Plants Based on Leaf Image Patterns with K-Nearest Neighbors Algorithm**). This project is a part of my final project in Image Processing course.
+
+![Web App Architecture](asset/05_web_app_arch.jpg)
 
 ## Dataset
 
@@ -94,12 +98,17 @@ bash scripts/run_docker.sh
 4. Open and test the service at API docs `http://localhost:6969/`
 ![API Docs Swagger UI](asset/02_fastapi_docs.png)
 
-5. Open and test the service at Web App `http://localhost:8051/`
+5. Open and test the service at Web App `http://localhost:8501/`
 ![Streamlit Web App](asset/03_web_app.png)
 
+## Extra (Deep Learning Model)
+
+According to KNN and other machine learning model result, I think the problem is in the dataset. So, I tried to train with deep learning model. I used MobileNetV3 as the base model and trained with transfer learning. The result was better than KNN and other machine learning model.
+![Deep Learning Model Result](asset/04_mobilenetv3_result.png)
+Here the training notebook: [Medical Leaf Image Classification (Deep Learning)](https://colab.research.google.com/drive/1-YK-djfIu3LtHOH6UiUHG7oScG-BzU0h?usp=sharing)
 
 ## Future Works
 
 * [x] Deployment API
 * [x] Web App Deployment (Streamlit / Gradio)
-* [ ] Train with Deep Learning
+* [x] Train with Deep Learning
