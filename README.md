@@ -1,6 +1,10 @@
 # Medical Leaf Image Classification
 
+![Web App Demo](asset/00_web_app_demo.gif)
+
 Unofficial implementation of [*Mengenali Jenis Tanaman Obat Berbasis Pola Citra Daun Dengan Algoritma K-Nearest Neighbors*](https://ejournal.unesa.ac.id/index.php/jinacs/article/download/42746/36728) (**Recognizing Types of Medicinal Plants Based on Leaf Image Patterns with K-Nearest Neighbors Algorithm**). This project is a part of my final project in Image Processing course.
+
+![Web App Architecture](asset/05_web_app_arch.jpg)
 
 ## Dataset
 
@@ -94,7 +98,7 @@ bash scripts/run_docker.sh
 4. Open and test the service at API docs `http://localhost:6969/`
 ![API Docs Swagger UI](asset/02_fastapi_docs.png)
 
-5. Open and test the service at Web App `http://localhost:8051/`
+5. Open and test the service at Web App `http://localhost:8501/`
 ![Streamlit Web App](asset/03_web_app.png)
 
 ## Extra (Deep Learning Model)
@@ -107,4 +111,4 @@ Here the training notebook: [Medical Leaf Image Classification (Deep Learning)](
 
 * [x] Deployment API
 * [x] Web App Deployment (Streamlit / Gradio)
-* [ ] Train with Deep Learning
+* [x] Train with Deep Learning
