@@ -43,9 +43,9 @@ class KnnCore:
         self.model_path = Path(model_path)
         self.scaler_path = Path(scaler_path)
         self.class_mapping_path = Path(class_mapping_path)
-        self.setup()
+        self._setup()
 
-    def setup(self) -> None:
+    def _setup(self) -> None:
         """Setup KNN Core"""
         # load scaler
         with open(self.scaler_path, "rb") as f:
