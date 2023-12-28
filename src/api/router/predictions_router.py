@@ -5,8 +5,8 @@ import rootutils
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 
 from src.api.core.knn_core import KnnCore
+from src.api.core.mobilenet_core import MobilenetCore
 from src.api.schema.api_schema import PredictionResponseSchema, PredictionsRequestSchema
-from src.api.schema.predictions_schema import PredictionsResultSchema
 from src.api.utils.logger import get_logger
 from src.api.utils.utils import preprocess_img_bytes
 
@@ -22,6 +22,10 @@ ROOT = rootutils.setup_root(
 
 # initialize knn core
 knn_core = KnnCore()
+
+# initialize mobilenet core
+mobilenet_core = MobilenetCore()
+mobilenet_core.setup()
 
 # initialize router
 router = APIRouter(
@@ -40,7 +44,7 @@ def allowed_file_types(filename: str):
 @router.post(
     "/knn",
     tags=["predictions"],
-    summary="Classify medical leaf image",
+    summary="Classify medical leaf image with KNN",
     response_model=PredictionResponseSchema,
 )
 async def knn_predictions(
@@ -62,6 +66,38 @@ async def knn_predictions(
 
     response = PredictionResponseSchema(
         status="success", message="Image processed successfully.", results=[predictions]
+    )
+
+    log.info(f"Image processed successfully.")
+
+    return response
+
+
+@router.post(
+    "/mobilenet",
+    tags=["predictions"],
+    summary="Classify medical leaf image with Mobilenet",
+    response_model=PredictionResponseSchema,
+)
+async def mobilenet_predictions(
+    request: Request, form: PredictionsRequestSchema = Depends()
+) -> PredictionResponseSchema:
+    """Mobilenet Predictions from Raw Medical Leaf Image"""
+
+    # Validate file type
+    if not allowed_file_types(form.image.filename):
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Invalid file type. Only JPG, JPEG, and PNG files are allowed.",
+        )
+    log.info(f"Processing image: {form.image.filename}")
+
+    img_np = await preprocess_img_bytes(form.image.file.read())
+
+    predictions = mobilenet_core.predict(img_np)
+
+    response = PredictionResponseSchema(
+        status="success", message="Image processed successfully.", results=predictions
     )
 
     log.info(f"Image processed successfully.")
