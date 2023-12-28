@@ -13,10 +13,10 @@ ROOT = rootutils.setup_root(
 
 sys.path.append(ROOT / "src")
 
-from src.dataset.dataset_module import DatasetModule
-from src.extraction.data_module import DataModule
-from src.extraction.feature_extractor import FeatureExtractor
-from src.model.model_builder import KNNModule
+from src.knn.dataset.dataset_module import DatasetModule
+from src.knn.extraction.data_module import DataModule
+from src.knn.extraction.feature_extractor import FeatureExtractor
+from src.knn.model.model_builder import KNNModule
 
 
 def main() -> None:
